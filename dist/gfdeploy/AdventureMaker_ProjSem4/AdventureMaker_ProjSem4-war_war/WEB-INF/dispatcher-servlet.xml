@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+    xmlns:lang="http://www.springframework.org/schema/lang" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms-4.3.xsd http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi-1.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd " 
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:osgi="http://www.springframework.org/schema/osgi" 
+    xmlns:jms="http://www.springframework.org/schema/jms" 
+    xmlns:jee="http://www.springframework.org/schema/jee" 
+    xmlns:flow="http://www.springframework.org/schema/webflow-config" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:c="http://www.springframework.org/schema/c" 
+    xmlns:aop="http://www.springframework.org/schema/aop" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <context:annotation-config/>
+    <context:component-scan base-package="controllers"/>
+    <mvc:annotation-driven/>
+    
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" id="urlMappings">
+        <property name="mappings">
+            <props>
+                <prop key="index.html">indexController</prop>
+            </props>
+        </property>
+    </bean>
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="viewResolver" p:suffix=".jsp" p:prefix="/WEB-INF/jsp/"/>
+    <bean class="org.springframework.web.servlet.mvc.ParameterizableViewController" id="indexController" p:viewName="index"/>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="AccountsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/AccountsFacade"/>
+        <property name="businessInterface" value="entities.AccountsFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="AccountDetailsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/AccountDetailsFacade"/>
+        <property name="businessInterface" value="entities.AccountDetailsFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="FeedbacksFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/FeedbacksFacade"/>
+        <property name="businessInterface" value="entities.FeedbacksFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="GamesFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/GamesFacade"/>
+        <property name="businessInterface" value="entities.GamesFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="GameDetailsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/GameDetailsFacade"/>
+        <property name="businessInterface" value="entities.GameDetailsFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="GroupsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/GroupsFacade"/>
+        <property name="businessInterface" value="entities.GroupsFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="StationsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/StationsFacade"/>
+        <property name="businessInterface" value="entities.StationsFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="TeamsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/TeamsFacade"/>
+        <property name="businessInterface" value="entities.TeamsFacadeLocal"/>
+    </bean>
+    <bean class="org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean" id="TeamTrackingsFacade">
+        <property name="jndiName" value="java:global/AdventureMaker_ProjSem4/AdventureMaker_ProjSem4-ejb/TeamTrackingsFacade"/>
+        <property name="businessInterface" value="entities.TeamTrackingsFacadeLocal"/>
+    </bean>
+</beans>
